@@ -1,15 +1,122 @@
 ====================
-io
+input/output
 ====================
 
 processor MyProc {
-  input  stream  clamp<444>[12, 12][124] myInput1;
+  input stream clamp<444>[12, 12][124] myInput1;
+  output value int myOut1;
 }
 
 --------------------
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (limited_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
       (identifier))))
+
+
+====================
+output/input
+====================
+
+processor MyProc {
+  output stream clamp<444>[12, 12][124] myOut1;
+  input value int myIn1;
+}
+
+--------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_statement
+      (io_direction)
+      (io_type)
+      (limited_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))))
+
+
+=====================
+IO Block
+=====================
+processor MyProc {
+  input {
+    value int in1;
+    value float in2;
+  }
+  output {
+    value int out1;
+    value float out2;
+  }
+}
+
+---------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_block
+      (io_direction)
+      (io_block_statement
+        (io_type)
+        (primitive_type)
+        (identifier))
+      (io_block_statement
+        (io_type)
+        (primitive_type)
+        (identifier)))
+    (io_block
+      (io_direction)
+      (io_block_statement
+        (io_type)
+        (primitive_type)
+        (identifier))
+      (io_block_statement
+        (io_type)
+        (primitive_type)
+        (identifier)))))
+
+
+====================
+IO Type Block
+====================
+processor MyProc {
+  input value {
+    int in1;
+    float in2;
+  }
+  output stream {
+    MyStruct out1;
+  }
+}
+
+--------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_type_block
+      (io_direction)
+      (io_type)
+      (io_type_block_statement
+        (primitive_type)
+        (identifier))
+      (io_type_block_statement
+        (primitive_type)
+        (identifier)))
+    (io_type_block
+      (io_direction)
+      (io_type)
+      (io_type_block_statement
+        (identifier)
+        (identifier)))))

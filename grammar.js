@@ -14,7 +14,7 @@ module.exports = grammar({
     _top_level_item: $ => choice(
       $.namespace_declaration,
       $.processor_declaration,
-      $.graph_declaration,
+      //todo: $.graph_declaration,
     ),
 
     namespace_declaration: $ => seq(
@@ -27,9 +27,9 @@ module.exports = grammar({
       repeat(
         choice(
           $._top_level_item,
-          // function def
-          // Global constant variables
-          // struct and using type declarations
+          //todo: function def
+          //todo: Global constant variables
+          //todo: struct and using type declarations
         ),
       ),
       "}"
@@ -41,25 +41,62 @@ module.exports = grammar({
       "{",
       repeat(
         choice(
-          $.io_declaration,
-          //$.io_block,
+          $.io_statement,
+          $.io_block,
+          $.io_type_block,
         ),
       ),
       "}",
     ),
 
-    graph_declaration: $ => 'graph',
-
-    io_declaration: $ => seq(
-      choice("input", "output"),
-      choice("stream", "event", "value"),
-      choice($._type, /*todo: $.type_list*/),
-      choice($.identifier, /*todo: $.array_identifier*/),
+    _base_io_statement: $ => seq(
+      choice($._endpoint_type, $.endpoint_type_list),
+      $.identifier, //todo: input/output arrays not yet implemented in language.
       //todo: annotations
       ";",
     ),
 
-    _type: $ => seq(
+    io_statement: $ => seq(
+      $.io_direction,
+      $.io_type,
+      $._base_io_statement,
+    ),
+
+    io_block_statement: $ => seq(
+      $.io_type,
+      $._base_io_statement,
+    ),
+
+    io_type_block_statement: $ => seq(
+      $._base_io_statement,
+    ),
+
+    io_block: $ => seq(
+      $.io_direction,
+      "{",
+      repeat1($.io_block_statement),
+      "}",
+    ),
+
+    io_type_block: $ => seq(
+      $.io_direction,
+      $.io_type,
+      "{",
+      repeat1($.io_type_block_statement),
+      "}",
+    ),
+
+    io_direction: _ => choice("input", "output"),
+    io_type: _ => choice("stream", "event", "value"),
+    // io_type_statement: $ => seq(
+    //   $._io_type,
+    //   choice($._type, /*todo: $.type_list*/),
+    //   $.identifier,
+    //   ";",
+    // )
+    // )
+
+    _base_type: $ => seq(
       choice(
         $.primitive_type,
         $.limited_type,
@@ -67,6 +104,19 @@ module.exports = grammar({
         $.qualified_identifier,
       ),
       repeat($._array_declaration)
+    ),
+
+    _declaration_type: $ => seq(
+      optional("const"),
+      $._base_type,
+    ),
+
+    _endpoint_type: $ => seq($._base_type),
+    endpoint_type_list: $ => seq(
+      "(",
+      $._endpoint_type,
+      repeat(seq(",", $._endpoint_type)),
+      ")",
     ),
 
     primitive_type: _ => choice(

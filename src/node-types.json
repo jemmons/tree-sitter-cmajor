@@ -1,12 +1,169 @@
 [
   {
-    "type": "io_declaration",
+    "type": "endpoint_type_list",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "limited_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "io_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "io_block_statement",
+          "named": true
+        },
+        {
+          "type": "io_direction",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "io_block_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "endpoint_type_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "io_type",
+          "named": true
+        },
+        {
+          "type": "limited_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "io_direction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "io_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "endpoint_type_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "io_direction",
+          "named": true
+        },
+        {
+          "type": "io_type",
+          "named": true
+        },
+        {
+          "type": "limited_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "io_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "io_type_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "io_direction",
+          "named": true
+        },
+        {
+          "type": "io_type",
+          "named": true
+        },
+        {
+          "type": "io_type_block_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "io_type_block_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "endpoint_type_list",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -39,10 +196,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "graph_declaration",
-          "named": true
-        },
         {
           "type": "identifier",
           "named": true
@@ -80,7 +233,15 @@
           "named": true
         },
         {
-          "type": "io_declaration",
+          "type": "io_block",
+          "named": true
+        },
+        {
+          "type": "io_statement",
+          "named": true
+        },
+        {
+          "type": "io_type_block",
           "named": true
         }
       ]
@@ -110,10 +271,6 @@
       "required": false,
       "types": [
         {
-          "type": "graph_declaration",
-          "named": true
-        },
-        {
           "type": "namespace_declaration",
           "named": true
         },
@@ -123,6 +280,14 @@
         }
       ]
     }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
   },
   {
     "type": ",",
@@ -173,6 +338,10 @@
     "named": false
   },
   {
+    "type": "const",
+    "named": false
+  },
+  {
     "type": "event",
     "named": false
   },
@@ -187,10 +356,6 @@
   {
     "type": "float64",
     "named": false
-  },
-  {
-    "type": "graph_declaration",
-    "named": true
   },
   {
     "type": "identifier",

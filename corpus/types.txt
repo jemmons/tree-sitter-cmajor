@@ -10,7 +10,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (primitive_type)
       (identifier))))
 
@@ -28,7 +30,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (limited_type)
       (identifier))))
 
@@ -46,7 +50,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (identifier)
       (identifier))))
 
@@ -63,7 +69,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (qualified_identifier
         (identifier)
         (identifier)
@@ -83,7 +91,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (primitive_type)
       (identifier))))
 
@@ -101,7 +111,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (limited_type)
       (identifier))))
 
@@ -119,7 +131,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (identifier)
       (identifier))))
 
@@ -136,7 +150,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (qualified_identifier
         (identifier)
         (identifier)
@@ -155,7 +171,9 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (primitive_type)
       (identifier))))
 
@@ -171,6 +189,30 @@ processor MyProc {
 (source_file
   (processor_declaration
     (identifier)
-    (io_declaration
+    (io_statement
+      (io_direction)
+      (io_type)
       (primitive_type)
+      (identifier))))
+
+
+
+===================
+Endpoint type list
+===================
+processor MyProc {
+  input value (int, MyStruct, wrap<64>) manyIn;
+}
+
+-------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_statement
+      (io_direction)
+      (io_type)
+      (endpoint_type_list
+        (primitive_type)
+        (identifier)
+        (limited_type))
       (identifier))))
