@@ -46,11 +46,19 @@ module.exports = grammar({
           $.io_type_block,
         ),
       ),
+      repeat(
+        choice(
+          $.function_declaration
+          //todo: generic function
+          //todo: types (struct, using)
+          //todo: state
+        )
+      ),
       "}",
     ),
 
     _base_io_statement: $ => seq(
-      choice($._endpoint_type, $.endpoint_type_list),
+      choice($._base_type, $.endpoint_type_list),
       $.identifier, //todo: input/output arrays not yet implemented in language.
       //todo: annotations
       ";",
@@ -106,16 +114,9 @@ module.exports = grammar({
       repeat($._array_declaration)
     ),
 
-    _declaration_type: $ => seq(
-      optional("const"),
-      $._base_type,
-    ),
-
-    _endpoint_type: $ => seq($._base_type),
     endpoint_type_list: $ => seq(
       "(",
-      $._endpoint_type,
-      repeat(seq(",", $._endpoint_type)),
+      commaSep($._base_type),
       ")",
     ),
 
@@ -130,6 +131,7 @@ module.exports = grammar({
       "complex32",
       "complex64",
       "bool",
+      "void",
     ),
 
     limited_type: _ => choice(
@@ -154,7 +156,20 @@ module.exports = grammar({
       )
     ),
 
+    function_declaration: $ => seq(
+      $._base_type,
+      $.identifier,
+      "(",
+      // $.parameter_list,
+      ")",
+      "{",
+      //todo: function body
+      "}"
+    ),
+
+
     identifier: _ => /[a-zA-Z]{1}[a-zA-Z1-9_]*/,
+
 
     comment: _ => token(choice(
       seq('//', /(\\+(.|\r?\n)|[^\\\n])*/),
@@ -166,3 +181,13 @@ module.exports = grammar({
     )),
   }
 });
+
+
+
+function commaSep(rule) {
+  return optional(commaSep1(rule));
+}
+
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}

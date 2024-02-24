@@ -1,0 +1,15 @@
+==================
+basic function
+==================
+processor MyProc {
+  void foo() {}
+}
+
+------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (function_declaration
+      (primitive_type)
+      (identifier))))
+

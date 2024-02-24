@@ -1,15 +1,74 @@
 ============
 primitive
 ============
-
 processor MyProc {
   input value int thing;
+  input value int32 thing;
+  input value int64 thing;
+  input value float thing;
+  input value float32 thing;
+  input value float64 thing;
+  input value complex thing;
+  input value complex32 thing;
+  input value complex64 thing;
+  input value bool thing;
+  input value void thing;
 }
 
 ------------
 (source_file
   (processor_declaration
     (identifier)
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
+    (io_statement
+      (io_direction)
+      (io_type)
+      (primitive_type)
+      (identifier))
     (io_statement
       (io_direction)
       (io_type)

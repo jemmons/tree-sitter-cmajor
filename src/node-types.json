@@ -5,6 +5,33 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "limited_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -229,6 +256,10 @@
       "required": true,
       "types": [
         {
+          "type": "function_declaration",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -338,10 +369,6 @@
     "named": false
   },
   {
-    "type": "const",
-    "named": false
-  },
-  {
     "type": "event",
     "named": false
   },
@@ -395,6 +422,10 @@
   },
   {
     "type": "value",
+    "named": false
+  },
+  {
+    "type": "void",
     "named": false
   },
   {
