@@ -1,0 +1,15 @@
+====================
+io
+====================
+
+processor MyProc {
+  input  stream  clamp<444>[12, 12][124] myInput1;
+}
+
+--------------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (limited_type)
+      (identifier))))

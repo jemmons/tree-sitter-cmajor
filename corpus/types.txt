@@ -1,0 +1,176 @@
+============
+primitive
+============
+
+processor MyProc {
+  input value int thing;
+}
+
+------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (primitive_type)
+      (identifier))))
+
+
+
+==============
+limited
+==============
+
+processor MyProc {
+  input value wrap<64> thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (limited_type)
+      (identifier))))
+
+
+
+==============
+identifier
+==============
+
+processor MyProc {
+  input value MyThing thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (identifier)
+      (identifier))))
+
+
+==============
+qualified identifier
+==============
+
+processor MyProc {
+  input value Foo::Bar::MyThing thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (qualified_identifier
+        (identifier)
+        (identifier)
+        (identifier))
+      (identifier))))
+
+
+============
+primitive array
+============
+
+processor MyProc {
+  input value int[64] thing;
+}
+
+------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (primitive_type)
+      (identifier))))
+
+
+
+==============
+limited array
+==============
+
+processor MyProc {
+  input value wrap<64>[128] thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (limited_type)
+      (identifier))))
+
+
+
+==============
+identifier array
+==============
+
+processor MyProc {
+  input value MyThing[64] thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (identifier)
+      (identifier))))
+
+
+==============
+qualified identifier array
+==============
+
+processor MyProc {
+  input value Foo::Bar::MyThing[64] thing;
+}
+
+--------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (qualified_identifier
+        (identifier)
+        (identifier)
+        (identifier))
+      (identifier))))
+
+
+===================
+multi-dimensional array
+===================
+processor MyProc {
+  input value int[10,10,10] thing;
+}
+
+------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (primitive_type)
+      (identifier))))
+
+
+===================
+c-style multi-dimensional array
+===================
+processor MyProc {
+  input value int[10][10][10] thing;
+}
+
+------------
+(source_file
+  (processor_declaration
+    (identifier)
+    (io_declaration
+      (primitive_type)
+      (identifier))))

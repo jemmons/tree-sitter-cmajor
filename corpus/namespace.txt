@@ -1,0 +1,40 @@
+============
+namespace
+============
+
+namespace foo {
+}
+
+------------
+(source_file
+  (namespace_declaration
+    (identifier)))
+
+===============
+nested namespace
+===============
+namespace foo {
+  namespace bar {
+  }
+}
+---------------
+(source_file
+  (namespace_declaration
+    (identifier)
+    (namespace_declaration
+      (identifier))))
+
+
+==================
+combined namespace
+==================
+
+namespace foo::bar {
+}
+
+------------------
+(source_file
+  (namespace_declaration
+    (qualified_identifier
+      (identifier)
+      (identifier))))

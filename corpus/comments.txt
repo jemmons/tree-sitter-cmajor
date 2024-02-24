@@ -1,0 +1,32 @@
+==============
+Line comment
+==============
+
+//stuff
+
+--------------
+(source_file
+  (comment))
+
+
+==============
+Block comment
+==============
+
+/* hello */
+
+--------------
+(source_file
+  (comment))
+
+==============
+multi-line block
+==============
+
+/*
+ * Hello
+ */
+
+--------------
+(source_file
+  (comment))
